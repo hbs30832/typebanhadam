@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled, { ThemeProvider } from "styled-components";
+import { Reset } from "styled-reset";
+import "./App.css";
+import Header from "./components/common/Header";
+import { theme } from "./styles/theme";
+import { RecoilRoot } from "recoil";
+import MainSection from "./components/common/MainSection";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Reset />
+      <RecoilRoot>
+        <AppContainer>
+          <Header />
+          <MainSection />
+        </AppContainer>
+      </RecoilRoot>
+    </ThemeProvider>
   );
 }
+
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+`;
 
 export default App;
